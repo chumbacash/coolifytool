@@ -1,0 +1,157 @@
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Body Style */
+body {
+    background-color: #f4f7fa; /* Light background color */
+    color: #333; /* Dark text color */
+}
+
+/* Container Styles */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Form Styles */
+h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4070f4; /* Primary color */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4070f4; /* Focus border color */
+    outline: none;
+}
+
+/* Button Styles */
+button {
+    padding: 15px;
+    background-color: #4070f4; /* Primary color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #365eb8; /* Darker shade on hover */
+}
+
+/* Link Styles */
+p {
+    text-align: center;
+}
+
+a {
+    color: #4070f4;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Space between headings and table */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #4070f4; /* Header background */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Zebra striping */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Row hover effect */
+}
+
+/* Button styles in table */
+button.approve, button.remove {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button.approve {
+    background-color: #28a745; /* Green for approve */
+}
+
+button.remove {
+    background-color: #dc3545; /* Red for remove */
+}
+
+button.approve:hover {
+    background-color: #218838; /* Darker green */
+}
+
+button.remove:hover {
+    background-color: #c82333; /* Darker red */
+}
+
+/* Flash message styles */
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.success {
+    color: #28a745; /* Green for success messages */
+}
+
+.danger {
+    color: #dc3545; /* Red for danger messages */
+}

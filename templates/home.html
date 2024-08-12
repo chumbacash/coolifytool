@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <title>Coolify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 600px; /* Set a max width for the container */
+            margin: 50px auto; /* Center the container */
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Center text within the container */
+        }
+
+        h2 {
+            margin: 0;
+            color: #35424a; /* Header color */
+        }
+
+        h3 {
+            margin: 20px 0 10px; /* Space above and below */
+            color: #35424a; /* Header color */
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            background-color: #5cb85c; /* Green color for buttons */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #4cae4c; /* Darker green on hover */
+        }
+
+        /* Flash messages styling */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Coolify!</h1>
+    </header>
+
+    <div class="container">
+        <h2>Welcome to Our Application!</h2>
+        <p>Join us to experience amazing services.</p>
+        
+        <h3>Get Started</h3>
+        <div>
+            <a href="{{ url_for('signup') }}">
+                <button>Sign Up</button>
+            </a>
+            <a href="{{ url_for('login') }}">
+                <button>Login</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Flash Messages -->
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

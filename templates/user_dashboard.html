@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <title>User Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}" type="module"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Asset Selection Dropdown -->
+        <div class="dropdown-container">
+            <label for="asset-select">Select Asset:</label>
+            <select id="asset-select" class="assetSelect">
+                <!-- Options will be populated by JavaScript -->
+            </select>
+        </div>
+
+        <!-- Threshold Buttons -->
+        <div class="threshold-buttons">
+            <div class="threshold-buttons-container">
+                <button class="threshold-button" data-value="1">1</button>
+                <button class="threshold-button" data-value="2">2</button>
+                <button class="threshold-button" data-value="3">3</button>
+                <button class="threshold-button" data-value="4">4</button>
+                <button class="threshold-button" data-value="5">5</button>
+                <button class="threshold-button" data-value="6">6</button>
+                <button class="threshold-button" data-value="7">7</button>
+                <button class="threshold-button" data-value="8">8</button>
+                <button class="threshold-button" data-value="9">9</button>
+            </div>
+        </div>
+        
+        <!-- Subscribe/Unsubscribe Buttons -->
+        <div class="button-container">
+            <button id="ticks" class="submitBtn">Subscribe Ticks</button>
+            <button id="ticks-unsubscribe" class="resetBtn">Unsubscribe Ticks</button>
+        </div>
+
+        <!-- Tick Data Display -->
+        <div id="tick-data"></div>
+
+        <!-- Progress Bars for Even/Odd and Over/Under -->
+        <div class="progress-bars">
+            <!-- EVEN/ODD Buttons and Progress Bars -->
+            <div class="even-odd-buttons">
+                <div class="even-odd-container">
+                    <button id="even-button" class="even-button">EVEN</button>
+                    <div class="progress-bar">
+                        <div class="even-progress"></div>
+                        <h5 class="even-percent">0%</h5>
+                    </div>
+                </div>
+                <div class="even-odd-container">
+                    <button id="odd-button" class="odd-button">ODD</button>
+                    <div class="progress-bar">
+                        <div class="odd-progress"></div>
+                        <h5 class="odd-percent">0%</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OVER/UNDER Buttons and Progress Bars -->
+            <div class="over-under-buttons">
+                <div class="over-under-container">
+                    <button id="over-button" class="over-button">OVER</button>
+                    <div class="progress-bar">
+                        <div class="over-progress"></div>
+                        <h5 class="over-percent">0%</h5>
+                    </div>
+                </div>
+                <div class="over-under-container">
+                    <button id="under-button" class="under-button">UNDER</button>
+                    <div class="progress-bar">
+                        <div class="under-progress"></div>
+                        <h5 class="under-percent">0%</h5>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prediction Section -->
+            <div class="prediction-container">
+                <button id="prediction-button" class="prediction-button">PREDICTION</button>
+                <div id="prediction-box" class="prediction-box"></div>
+            </div>
+
+            <!-- SCAN DIGIT Section -->
+            <div class="scan-digit-container">
+                <button id="scan-digit-button" class="scan-digit-button">SCAN DIGIT</button>
+                <div id="digit-box" class="digit-box">0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include the JavaScript file -->
+    <script type="module" src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+</html>

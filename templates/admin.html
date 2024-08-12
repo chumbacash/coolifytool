@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMgT+o3Gm6z5I5y8U6w2wLy5D3nG5z5vW5h8Pb" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 15px 20px;
+            text-align: center;
+            border-radius: 5px;
+            position: relative; /* Allow positioning of the logout button */
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .logout-btn {
+            position: absolute; /* Position the logout button */
+            top: 15px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #d9534f; /* Red color for logout button */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #c9302c; /* Darker red on hover */
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #35424a;
+            font-size: 1.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #35424a;
+            color: white;
+        }
+
+        td a {
+            display: inline-block;
+            padding: 8px 15px;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .approve-btn {
+            background-color: #5cb85c; /* Green color for approve button */
+        }
+
+        .approve-btn:hover {
+            background-color: #4cae4c; /* Darker green on hover */
+        }
+
+        .remove-btn {
+            background-color: #d9534f; /* Red color for remove button */
+        }
+
+        .remove-btn:hover {
+            background-color: #c9302c; /* Darker red on hover */
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        /* Responsive design */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            .logout-btn {
+                width: 100%; /* Make button full width on small screens */
+                text-align: center;
+                position: relative; /* Reset positioning */
+                margin-bottom: 10px; /* Space below the button */
+            }
+
+            table {
+                font-size: 0.9em; /* Adjust font size for small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+        <a class="logout-btn" href="{{ url_for('logout') }}">Logout</a>
+    </header>
+
+    <section>
+        <h2>Pending Approvals</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+                <th>Action</th>
+            </tr>
+            {% for user in pending_users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.registration_date }}</td>
+                <td>
+                    <a class="approve-btn" href="{{ url_for('approve_user', user_id=user.id) }}">Approve</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <section>
+        <h2>Approved Members</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Registration Date</th>
+                <th>Approved Date</th>
+                <th>Action</th>
+            </tr>
+            {% for user in approved_users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.registration_date }}</td>
+                <td>{{ user.approved_date[:19] if user.approved_date else 'Not Approved' }}</td>  <!-- Check for None -->
+                <td>
+                    <a class="remove-btn" href="{{ url_for('remove_user', user_id=user.id) }}">Remove</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2021 - 2024 Coolify. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

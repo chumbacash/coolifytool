@@ -1,0 +1,437 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensure consistent box-sizing */
+}
+
+:root {
+  --box-shadow: 0 1rem 2rem var(--color-light);
+  --color-light: rgb(255, 255, 255);
+  --color-background: rgb(255, 255, 255); /* Background color */
+  --color-success: rgb(128, 0, 60);
+  --color-red: rgb(7, 64, 187);
+  --color-text: #171e7a;
+  --color-theme: #2eaaaa;
+  --color-theme2: #077e7e;
+  --color-unsubscribe: #d9534f; /* Unsubscribe Ticks Button */
+  --color-subscribe: #5bc0de; /* Subscribe Ticks Button */
+}
+
+/* Body and Main Container */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  justify-content: center;
+  background-color: var(--color-background);
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Dropdown and Asset Selection */
+.dropdown-container {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.assetSelect {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #920808;
+  font-size: 14px;
+}
+
+/* Button Styles */
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.submitBtn, .resetBtn {
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: transform 0.25s ease;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.submitBtn {
+  background-color: #2eaaaa;
+}
+
+.submitBtn:hover {
+  background-color: #349797;
+}
+
+.resetBtn {
+  background-color: #ff444f;
+}
+
+.resetBtn:hover {
+  background-color: #b42b2b;
+}
+
+/* Tick Data */
+#tick-data {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #06491a;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 100px;
+  background-color: #caf316;
+  overflow-y: auto;
+  text-align: center; /* Center text inside tick data */
+}
+
+/* Choices and Progress Bar */
+.choices {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.choose {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 600px;
+}
+
+.choice_one, .choice_two {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.Over_choice, .under_choice {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px; /* Space out from progress bars */
+}
+
+.Over_choice {
+  margin-right: 20px; /* Space between sets of buttons */
+}
+
+.under_choice {
+  margin-left: 20px; /* Space between sets of buttons */
+}
+
+button {
+  background-color: #94065e;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #349797;
+}
+
+.choose_again {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.even_choice, .odd_choice {
+  margin-top: 10px;
+}
+
+.match {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.countdown-button {
+  background-color: #2eaaaa;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.countdown-button:hover {
+  background-color: #349797;
+}
+
+.purchase {
+  margin-top: 10px;
+}
+
+/* Last Digit and Progress Bars */
+.last_digit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.progress-bar, .progress-bar2 {
+  width: 100%;
+  max-width: 600px;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 10px; /* Space for spacing */
+}
+
+.progress, .progress2 {
+  height: 100%;
+  background-color: var(--color-success);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.percent, .percent2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: var(--color-text);
+}
+
+/* Even/Odd Buttons with Progress Bars */
+.even-odd-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  gap: 20px; /* Space between Even and Odd buttons */
+}
+
+.even-container, .odd-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.even-button, .odd-button {
+  background-color: #07971f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.even-button.active, .odd-button.active {
+  background-color: black;
+}
+
+.progress-bar-even, .progress-bar-odd {
+  flex-grow: 1;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 10px; /* Space between button and progress bar */
+}
+
+.progress-even, .progress-odd {
+  height: 100%;
+  background-color: var(--color-success);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.percent-even, .percent-odd {
+  margin-left: 10px; /* Space between progress bar and percentage */
+  font-size: 12px;
+  color: var(--color-text);
+}
+
+/* Over/Under Buttons with Progress Bars */
+.over-under-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
+  gap: 20px; /* Space between Over and Under buttons */
+}
+
+.over-container, .under-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.over-button, .under-button {
+  background-color: #07971f;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.over-button.active, .under-button.active {
+  background-color: black;
+}
+
+.progress-bar-over, .progress-bar-under {
+  flex-grow: 1;
+  height: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  margin-left: 10px; /* Space between button and progress bar */
+}
+
+.progress-over, .progress-under {
+  height: 100%;
+  background-color: var(--color-success);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.percent-over, .percent-under {
+  margin-left: 10px; /* Space between progress bar and percentage */
+  font-size: 12px;
+  color: var(--color-text);
+}
+
+/* RISE/FALL Buttons */
+.rise-button, .fall-button {
+  background-color: #ff9800; /* Orange color for RISE/FALL */
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.rise-button.active, .fall-button.active {
+  background-color: #349797; /* Active state background color */
+}
+
+/* Prediction Box */
+#prediction-box {
+  background-color: #64ad4b;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 4px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+/* SCAN DIGIT Button and Box */
+.scan-digit-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.scan-digit-button {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.digit-box {
+  background-color: black;
+  color: white;
+  padding: 10px 15px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  min-width: 40px;
+  margin-left: auto;
+}
+
+/* Unsubscribe Button */
+#unsubscribeTicks {
+  background-color: var(--color-unsubscribe);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+#unsubscribeTicks:hover {
+  background-color: #c9302c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .button-container, .even-odd-buttons, .over-under-buttons, .scan-digit-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .even-button, .odd-button, .over-button, .under-button, .scan-digit-button {
+    width: 100%;
+  }
+
+  .progress-bar-even, .progress-bar-odd, .progress-bar-over, .progress-bar-under {
+    margin-left: 0;
+  }
+
+  .percent-even, .percent-odd, .percent-over, .percent-under {
+    margin-left: 0;
+  }
+}
