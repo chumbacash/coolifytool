@@ -103,7 +103,7 @@ body {
   width: 100%;
   max-width: 600px;
   min-height: 100px;
-  background-color: #caf316;
+  background-color: #83f3e4;
   overflow-y: auto;
   text-align: center; /* Center text inside tick data */
 }
@@ -250,7 +250,7 @@ button:hover {
 }
 
 .even-button, .odd-button {
-  background-color: #07971f;
+  background-color: #020974;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -304,7 +304,7 @@ button:hover {
 }
 
 .over-button, .under-button {
-  background-color: #07971f;
+  background-color: black;
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -321,7 +321,7 @@ button:hover {
 .progress-bar-over, .progress-bar-under {
   flex-grow: 1;
   height: 20px;
-  background-color: #f0f0f0;
+  background-color: #e79393;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
