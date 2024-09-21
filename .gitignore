@@ -1,2 +1,46 @@
-__pycache__
-.venv
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+
+# Environment variables
+.env
+
+# Folder structure
+structure.txt
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# Flask instance folder
+instance/
+
+# Database files
+*.db
+*.sqlite3
+
+# Log files
+*.log
+
+# Migrations
+migrations/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# macOS Finder
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
