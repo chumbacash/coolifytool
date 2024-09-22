@@ -8,9 +8,6 @@ __pycache__/
 # Environment variables
 .env
 
-# github 
-.github
-
 # Folder structure
 structure.txt
 

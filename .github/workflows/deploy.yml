@@ -1,0 +1,30 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main  # Adjust to the branch you want to trigger deployment
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up SSH
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H ec2-54-193-109-8.us-west-1.compute.amazonaws.com >> ~/.ssh/known_hosts
+
+    - name: Deploy to EC2
+      run: |
+        scp -r -i ~/.ssh/id_rsa ./* ec2-user@ec2-54-193-109-8.us-west-1.compute.amazonaws.com:/home/ec2-user/app
+        ssh -i ~/.ssh/id_rsa ec2-user@ec2-54-193-109-8.us-west-1.compute.amazonaws.com 'cd /home/ec2-user/app && docker-compose up --build -d'
+
+    - name: Verify Deployment
+      run: |
+        ssh -i ~/.ssh/id_rsa ec2-user@ec2-54-193-109-8.us-west-1.compute.amazonaws.com 'docker ps'
