@@ -39,6 +39,7 @@ const underProgress = document.getElementById('under-progress');
 const overPercent = document.getElementById('over-percent');
 const underPercent = document.getElementById('under-percent');
 const scanDigitButton = document.getElementById('scan-digit-btn');
+const thresholdButtons = document.querySelectorAll('.threshold-buttons button'); // For threshold selection
 
 // Format tick value to preserve precision (including trailing zeros)
 const formatTick = (tick) => {
@@ -144,6 +145,9 @@ const calculateEMA = (currentTick, previousEMA) => {
 
 // Update the progress bars for Even/Odd and Over/Under
 const updateProgressBars = (currentDigit) => {
+    // Get selected threshold
+    const threshold = parseInt(document.querySelector('.threshold-buttons button.active')?.getAttribute('data-value')) || 3; // Default threshold to 3 if none selected
+    
     // Even/Odd Progress Bar Calculation
     const evenCount = tickList.filter(tick => parseInt(tick.replace('.', '').slice(-1), 10) % 2 === 0).length;
     const oddCount = tickList.length - evenCount;
@@ -156,8 +160,8 @@ const updateProgressBars = (currentDigit) => {
     oddProgress.style.width = `${oddPercentage}%`;
     oddPercent.textContent = `${Math.round(oddPercentage)}%`;
 
-    // Over/Under Progress Bar Calculation (based on last digit, not the full tick value)
-    const underCount = tickList.filter(tick => parseInt(tick.replace('.', '').slice(-1), 10) < 5).length;
+    // Over/Under Progress Bar Calculation (based on the threshold set by the user)
+    const underCount = tickList.filter(tick => parseInt(tick.replace('.', '').slice(-1), 10) <= threshold).length;
     const overCount = tickList.length - underCount;
     const underPercentage = (underCount / tickList.length) * 100;
     const overPercentage = 100 - underPercentage;
@@ -215,6 +219,17 @@ scanDigitButton.addEventListener('click', () => {
 // Event listeners
 document.getElementById('subscribe-btn').addEventListener('click', subscribeTicks);
 document.getElementById('unsubscribe-btn').addEventListener('click', unsubscribeTicks);
+
+// Handle threshold button clicks
+thresholdButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        // Remove 'active' class from all buttons
+        thresholdButtons.forEach(btn => btn.classList.remove('active'));
+        // Add 'active' class to clicked button
+        event.target.classList.add('active');
+        updateProgressBars(); // Update progress bars based on new threshold
+    });
+});
 
 // Initialize dropdown
 populateAssetDropdown();

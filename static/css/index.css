@@ -1,7 +1,7 @@
 :root {
   --color-background: #ffffff;
   --color-foreground: #000000;
-  --color-primary: hwb(137 0% 86%);
+  --color-primary: hwb(0 0% 100%);
   --color-primary-foreground: #ffffff;
   --color-muted: #f0f0f0;
   --color-destructive: #ff4136;

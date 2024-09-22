@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify</title>
+    <title>Verify OTP</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <!-- Header Section -->
     <header>
-        <h1>Verify</h1>
+        <h1>Verify OTP</h1>
     </header>
 
-    <!-- Main Content -->
     <div class="container verify-container">
         <h2>Enter the code</h2>
         
-        <!-- Flash Messages (Success or Error) -->
-        <div class="flash-message">
+        <div class="flash-messages">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}
                     <ul>
@@ -30,17 +27,14 @@
             {% endwith %}
         </div>
 
-        <!-- OTP Verification Form -->
         <form action="{{ url_for('verify_otp') }}" method="POST">
             <input type="text" name="otp" placeholder="Enter 6-digit OTP" required>
             <button type="submit">Verify Code</button>
         </form>
 
-        <!-- Link to Resend OTP -->
         <p>Didn't receive the code? <a href="{{ url_for('signup') }}">Signup again</a></p>
     </div>
 
-    <!-- Footer Section -->
     <footer>
         &copy; 2021 - 2024 Coolify. All Rights Reserved.
     </footer>
