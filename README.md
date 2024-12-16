@@ -11,7 +11,6 @@ It is a Flask application for user signup, login, and admin management with real
 
 ## Project Structure
 ```
-
 Coolify/
 │
 ├── .venv                   # Virtual environment for project dependencies
@@ -37,7 +36,6 @@ Coolify/
 ├── forms.py                # File containing form classes and logic
 ├── app.py                  # Flask application entry point and configuration
 └── models.py               # Database models and schema definitions
-
 ```
 ## Modifications
 - we went ahead and added a cool UI to the user_dashboard
