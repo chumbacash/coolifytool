@@ -10,7 +10,7 @@ It is a Flask application for user signup, login, and admin management with real
 - Flash messages for user feedback
 
 ## Project Structure
-
+```
 
 Coolify/
 │
@@ -38,7 +38,7 @@ Coolify/
 ├── app.py                  # Flask application entry point and configuration
 └── models.py               # Database models and schema definitions
 
-
+```
 ## Modifications
 - we went ahead and added a cool UI to the user_dashboard
 - Added some security features towards the data
